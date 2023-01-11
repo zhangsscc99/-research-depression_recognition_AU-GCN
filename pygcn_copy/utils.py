@@ -46,7 +46,6 @@ def load_data(path="../data/cora/", dataset="cora"):
 
     features = torch.FloatTensor(np.array(features.todense()))
     #labels = torch.LongTensor(np.where(labels)[1])
-    
     labels = torch.LongTensor(labels)
     adj = sparse_mx_to_torch_sparse_tensor(adj)
 
