@@ -12,10 +12,20 @@ def encode_onehot(labels):
     return labels_onehot
     """
 
+def adj_matrix():
+    AU1_AU4_joint_count = 50 # Number of instances where both AU1 and AU4 are present
+    AU4_count = 200 # Number of instances where AU4 is present
+    total_count = 1000 # Total number of instances in the dataset
+
+    P_AU1_AU4 = AU1_AU4_joint_count / total_count
+    P_AU4 = AU4_count / total_count
+
+    P_AU1_given_AU4 = P_AU1_AU4 / P_AU4
+
 
 def load_data(path="../data/cora/", dataset="cora"):
     """Load citation network dataset (cora only for now)"""
-    print('Loading {} dataset...'.format(dataset))
+    print('Loading our dataset')
 
     idx_features_labels = np.genfromtxt("{}{}.content".format(path, dataset),
                                         dtype=np.dtype(str))

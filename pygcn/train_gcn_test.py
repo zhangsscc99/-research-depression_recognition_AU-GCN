@@ -102,6 +102,9 @@ for i in range(9):
     adj3.append(adj2)
 adj=torch.FloatTensor(adj3)
 
+
+
+
 #adj=adj.long()
 idx_train=[0]
 idx_val=[0]
