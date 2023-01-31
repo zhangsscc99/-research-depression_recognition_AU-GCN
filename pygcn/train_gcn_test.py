@@ -99,7 +99,24 @@ embedding = torch.nn.Embedding(num_embeddings=9, embedding_dim=40)
 AU_set_lst
 
 # %%
+#features=embedding(AU_set_lst[0])
+#len(AU_set_lst)==1050
 features=embedding(AU_set_lst[0])
+labels=[[100]]*1  #a number between 0-63 (PTSD severity)
+
+
+
+# embedding 9*40
+# AU1, AU2....AU9
+#  40
+
+
+#1050 rows of AU features
+#1050 labels
+#where is label for 2014
+
+labels = torch.LongTensor(labels)
+labels = labels.to(torch.float32)
 adj2=[0]*9
 adj3=[]
 for i in range(9):
@@ -184,9 +201,7 @@ optimizer = optim.Adam(model.parameters(),
 #我设置的loss 这个是
 loss_func = torch.nn.MSELoss()
 
-labels=[[100]]*9
-labels = torch.LongTensor(labels)
-labels = labels.to(torch.float32)
+
 
 
 
@@ -244,5 +259,7 @@ def test():
           "loss= {:.4f}".format(loss_test.item()))
 train(50)
 test()
+#from torchsummary import summary
+#print(summary(model))
 
 
